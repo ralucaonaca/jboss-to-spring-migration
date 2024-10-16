@@ -3,8 +3,6 @@ package com.kitchensink.advice;
 import com.kitchensink.exception.EntityNotFoundException;
 import com.kitchensink.exception.ErrorFieldMessage;
 import com.kitchensink.exception.ErrorMessage;
-import jakarta.validation.ConstraintViolationException;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
