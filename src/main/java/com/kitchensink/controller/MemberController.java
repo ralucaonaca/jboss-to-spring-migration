@@ -4,28 +4,42 @@ import com.kitchensink.dto.MemberDTO;
 import com.kitchensink.service.MemberService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
-@RestController
-@RequestMapping("/api/v1")
+@Controller
 public class MemberController {
 
     @Autowired
     MemberService memberService;
 
-    @PostMapping(value = "/member", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<MemberDTO> addCustomer(@Valid @RequestBody MemberDTO customerDto) {
-        MemberDTO memberDTO = memberService.saveNewCustomer(customerDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(memberDTO);
+    @GetMapping("/")
+    public String viewHomePage(Model model) {
+        model.addAttribute("allMemberList", memberService.getAllMembers());
+        model.addAttribute("memberInfo", new MemberDTO());
+        return "index";
     }
 
-    @GetMapping("/list")
-    public ResponseEntity<List<MemberDTO>>listCustomers() {
-        return new ResponseEntity<>(memberService.getAllMembers(), HttpStatus.OK);
+    @PostMapping("/addMember/")
+    public String addNewMember(Model model, @Valid @ModelAttribute MemberDTO memberDTO,
+                               BindingResult theBindingResult) {
+
+        if (theBindingResult.hasErrors()) {
+            model.addAttribute("allMemberList", memberService.getAllMembers());
+            model.addAttribute("memberInfo", memberDTO);
+            return "index";
+        }
+        memberService.saveNewCustomer(memberDTO);
+        return "redirect:/";
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public String handleException(Exception ex, Model model) {
+        model.addAttribute("errorMessage", ex.getMessage());
+        return "error";
     }
 }

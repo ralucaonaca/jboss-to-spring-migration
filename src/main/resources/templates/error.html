@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title></title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <link th:href="@{/css/screen.css}" rel="stylesheet" />
+</head>
+<body>
+<div id="container">
+    <div class="dualbrand">
+    </div>
+    <div id="content">
+        <h1>Welcome to Spring Boot!</h1>
+        <div>
+            <p>You have successfully deployed a Spring Boot Application.</p>
+        </div>
+        <h1>Error</h1>
+        <p>Error Message: <span th:text="${errorMessage}"></span></p>
+    </div>
+    <div id="footer">
+        <p>
+            This project was generated from a Maven with Spring Boot.<br />
+        </p>
+    </div>
+</div>
+</body>
+</html>

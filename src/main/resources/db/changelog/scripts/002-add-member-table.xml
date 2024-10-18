@@ -6,7 +6,7 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <preConditions>
-        <runningAs  username="raluca"/>
+        <runningAs  username="postgres"/>
     </preConditions>
 
     <changeSet  id="1"  author="Raluca">

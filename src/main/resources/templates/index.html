@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title></title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <link th:href="@{/css/screen.css}" rel="stylesheet" />
+</head>
+<body>
+<div id="container">
+    <div class="dualbrand">
+    </div>
+    <div id="content">
+        <h1>Welcome to Spring Boot!</h1>
+        <div>
+            <p>You have successfully deployed a Spring Boot Application.</p>
+        </div>
+        <form id="reg" method="post" th:action="@{/addMember/}" th:object="${memberInfo}">
+            <h2>Member Registration</h2>
+            <p>Enforces annotation-based constraints defined on the
+                model class.</p>
+
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="titleCell">
+                            <input id="name" placeholder="Name:" required type="text" th:field="*{name}"/>
+                        </td>
+                        <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+                    </tr>
+                    <tr>
+                    </tr>
+                        <td class="titleCell">
+                            <input id="email" placeholder="Email:" required type="text" th:field="*{email}"/>
+                        </td>
+                        <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>
+                    <tr>
+                        <td class="titleCell">
+                            <input id="phoneNumber" placeholder="Phone Number:" required type="text" th:field="*{phoneNumber}"/>
+                        </td>
+                        <td th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Phone Number Error</td>
+                    </tr>
+                    <tr>
+                        <td class="titleCell">
+                            <input type="submit" value="Register Member">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+
+        <h3>Members List</h3>
+        <table class = "simpletablestyle">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone No</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="member:${allMemberList}">
+                    <td th:text="${member.name}"></td>
+                    <td th:text="${member.email}"></td>
+                    <td th:text="${member.phoneNumber}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="footer">
+        <p>
+            This project was generated from a Maven with Spring Boot.<br />
+        </p>
+    </div>
+</div>
+</body>
+</html>

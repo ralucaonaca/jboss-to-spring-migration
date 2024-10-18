@@ -6,12 +6,12 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <preConditions>
-        <runningAs  username="raluca"/>
+        <runningAs  username="postgres"/>
     </preConditions>
 
     <changeSet  id="0"  author="Raluca">
         <sql>
-            CREATE SCHEMA IF NOT EXISTS demo;
+            CREATE SCHEMA IF NOT EXISTS jboss_to_spring_migration;
         </sql>
     </changeSet>
 </databaseChangeLog>
