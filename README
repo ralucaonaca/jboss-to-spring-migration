@@ -1,0 +1,8 @@
+I'm using a macos laptop and i'm used with the command line terminal
+
+Steps to run the app:
+
+1. Clone the project - git clone ...
+2. Run the command 'docker-compose up' in the command line in the project where you clone it
+3. Run the command 'docker-compose run' in the command line in the project where you clone it.
+4. Go
