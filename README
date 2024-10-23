@@ -2,7 +2,16 @@ I'm using a macos laptop and i'm used with the command line terminal
 
 Steps to run the app:
 
-1. Clone the project - git clone ...
-2. Run the command 'docker-compose up' in the command line in the project where you clone it
-3. Run the command 'docker-compose run' in the command line in the project where you clone it.
-4. Go
+1. Clone the project : git clone https://github.com/ralucaonaca/jboss-to-spring-migration.git
+2. Before running the net command please make sure that mvn --version
+points to the last version of mvn and is using the java version 21
+For example:
+mvn --version
+Maven home: /Users/ralucaonaca-boca/apache-maven-3.9.9
+Java version: 21.0.4, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home
+Default locale: en_US, platform encoding: UTF-8
+OS name: "mac os x", version: "12.7.6", arch: "x86_64", family: "mac"
+
+3. If you already have installed the maven and also sdk java 21 then run the command 'mvn clean install'
+4. Run the command 'docker-compose up' in the command line in the project where you clone it
+5. Go to your favorite browser and try to access : http://localhost:8080/
